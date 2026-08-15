@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Ke Kong — shared listening room.">
+  <meta name="theme-color" content="#080808">
+  <link rel="icon" href="/images/favicon.ico">
+  <title>Ke Kong</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+
+  <div class="bg-image-default"></div> 
+
+  <!-- Hidden YouTube Audio Engine -->
+  <div id="youtube-player" style="position: fixed; bottom: 0; right: 0; width: 1px; height: 1px; opacity: 0.01; pointer-events: none; z-index: -999;"></div>
+
+  <div class="app-container">
+    <header>
+      <div class="time-display" id="clock"></div>
+
+      <div class="live-badge">
+        <span class="glowing-dot"></span>
+        <span id="user-count">1</span>
+        <span class="Listening-text">Listening</span>
+      </div>
+
+      <a href="https://www.youtube.com/playlist?list=PLUOGg99dpdEU&jct=wDQ9vNn5HhajtgpofGWwIQ" target="_blank" rel="noopener noreferrer" class="collab-btn" aria-label="Add a song to this playlist" title="Add a song to this playlist">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+        </svg>
+        <span>Add to Playlist</span>
+      </a>
+    </header>
+
+    <div class="center-content">
+      <img src="/images/ke.png" alt="KE KONG" class="title-logo">
+    </div>
+
+    <!-- Floating Player Bar -->
+    <div class="player-wrapper">
+      <div class="player-card">
+        
+        <div class="vinyl-container">
+          <img 
+            src="https://img.youtube.com/vi/__TRACK_ID__/hqdefault.jpg" 
+            alt="Album art for __TRACK_TITLE__" 
+            class="album-art" 
+            id="album-cover"
+          >
+          <div class="vinyl-spindle"></div>
+        </div>
+
+        <div class="track-info">
+          <div class="track-title" id="track-title">__TRACK_TITLE__</div>
+          <div class="track-artist" id="track-artist">__TRACK_ARTIST__</div>
+          
+          <div class="progress-section">
+            <input type="range" id="progress-bar" value="0" min="0" max="100" aria-label="Seek track">
+            <div class="time-stamps">
+              <span id="current-time">0:00</span>
+              <span id="duration-time">--:--</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="controls">
+          <button class="btn-icon" id="prev-btn" aria-label="Previous Track" title="Previous Track">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+              <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/>
+            </svg>
+          </button>
+          
+          <button class="btn-play" id="play-btn" aria-label="Play or pause" title="Play/Pause">
+            <svg id="play-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+          </button>
+          
+          <button class="btn-icon" id="next-btn" aria-label="Next Track" title="Next Track">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+              <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>
