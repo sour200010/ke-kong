@@ -54,6 +54,7 @@ body {
 /* Header Navigation */
 header {
   position: relative;
+  z-index: 10;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -117,7 +118,11 @@ header {
   100% { width: 26px; height: 26px; opacity: 0; }
 }
 
+/* Ensure button receives clicks/taps */
 .collab-btn {
+  position: relative;
+  z-index: 11;
+  cursor: pointer;
   display: flex;
   align-items: center;
   gap: 6px;
@@ -149,10 +154,11 @@ header {
   fill: currentColor;
 }
 
-/* Center Logo */
+/* Let touch events pass through the logo container */
 .center-content {
   text-align: center;
   margin-top: -23rem; 
+  pointer-events: none;
 }
 
 .title-logo {
